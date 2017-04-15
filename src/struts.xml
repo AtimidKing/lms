@@ -3,16 +3,8 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-	<package name="default" extends="struts-default">
+	<package name="book" namespace="/books" extends="struts-default">
 		<global-allowed-methods>regex:.*</global-allowed-methods>
-		<action name="*Book" class="com.king.books.BooksAction" method="{1}">
-			<result>/result.jsp</result>
-			<result name="add">/View/Books/addBook.jsp</result>
-			<result name="index">/View/Books/indexBook.jsp</result>
-		</action>
-		<action name="login" method="login" class="com.king.users.LoginAction">
-			<result name="userinfo">/View/Users/userinfo.jsp</result>
-		</action>
 	</package>
 
 </struts>

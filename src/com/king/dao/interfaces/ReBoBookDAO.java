@@ -1,6 +1,6 @@
 package com.king.dao.interfaces;
 
 public interface ReBoBookDAO {
-	public boolean returnBook(String bookId)throws Exception;
-	public boolean borrowBook(String bookId ,String userId)throws Exception;
+	public void returnBook(int booid)throws Exception;
+	public void borrowBook(int bookId ,String userId)throws Exception;
 }

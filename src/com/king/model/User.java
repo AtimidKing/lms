@@ -3,7 +3,21 @@ package com.king.model;
 public class User {
 	private String username;
 	private String password;
+	private String repassword;
 	private String email;
+	private String validationCode;
+	public String getRepassword() {
+		return repassword;
+	}
+	public void setRepassword(String repassword) {
+		this.repassword = repassword;
+	}
+	public String getValidationCode() {
+		return validationCode;
+	}
+	public void setValidationCode(String validationCode) {
+		this.validationCode = validationCode;
+	}
 	public String getUsername() {
 		return username;
 	}
