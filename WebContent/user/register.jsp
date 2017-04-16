@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,27 +28,28 @@
 </head>
 <body>
 <div class="container">
-	<form class="form-register" action="user/register">
+	<label><s:actionerror/></label>
+	<form class="form-register" action="user/register.action">
 		<h2 class="form-register-heading">注册</h2>
 		<label for="inputUsername" class="sr-only">用户名</label> 
-		<input type="text" id="inputUsername" class="form-control"
+		<input type="text" id="inputUsername" class="form-control" name="user.username"
 			placeholder="用户名" required autofocus> 
 		<label for="inputPassword" class="sr-only">密码</label> 
-		<input type="password" id="inputPassword" class="form-control"
+		<input type="password" id="inputPassword" class="form-control" name="user.password"
 			placeholder="密码" required> 
 		<label for="inputPassword" class="sr-only">确认密码</label> 
-		<input type="password" id="inputPassword" class="form-control" 
+		<input type="password" id="inputPassword" class="form-control" name="user.repassword"
 			placeholder="确认密码" required>
 		<label for="inputEmail" class="sr-only">电子邮箱</label>
-		<input type="email" id="imputEmail" class="form-control"
+		<input type="email" id="imputEmail" class="form-control" name="user.email"
 			placeholder="电子邮箱" required>
 		<label for="inputValidationCode" class="sr-only">验证码</label>
-		<input type="text" id="inputValidationCode" class="form-control"
+		<input type="text" id="inputValidationCode" class="form-control" name="user.validationCode"
 			placeholder="验证码" required>
 		<img src="user/validate_code.action" id="img_validation_code" class="img-responsive" >
 		<a href="#" onClick="refresh()">重新获取验证码</a>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
-			in</button>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+		<a class="register-link" href="login.jsp">已有账号点这里</a>
 	</form>
 
 	</div>

@@ -6,38 +6,43 @@
 	<package name="book" namespace="/books" extends="struts-default">
 		<global-allowed-methods>regex:.*</global-allowed-methods>
 		<action name="index" class="com.king.action.book.IndexAction">
-		
+
 		</action>
 		<action name="add" class="com.king.action.book.AddAction">
-		
+
 		</action>
 		<action name="modify" class="com.king.action.book.ModifyAction">
-		
+
 		</action>
 		<action name="delete" class="com.king.action.book.DeleteAction">
-		
+
 		</action>
 		<action name="serach" class="com.king.action.book.SearchAction">
-		
+
 		</action>
-		
+
 	</package>
+	
 	<package name="user" namespace="/user" extends="struts-default">
-		<action name="login" class="com.king.action.user.LoginAction">
-		<result name="success" type="redirect">/library/index.jsp</result>
-		<result name="input" type="redirect">/user/login.jsp</result>
+		<action name="logins" class="com.king.action.user.LoginAction">
+			<result name="success" type="redirect">/library/index.jsp</result>
+			<result name="input">/user/login.jsp</result>
 		</action>
 		<action name="register" class="com.king.action.user.RegisterAction">
-		
+			<result name="success" type="redirect">/user/login.jsp</result>
+			<result name="input" type="redirect">/user/register.jsp</result>
+		</action>
+		<action name="test" class="com.king.test.TextAction">
+			<result>/user/login.jsp</result>
 		</action>
 		<action name="validate_code" class="com.king.validation.ValidationCodeAction" />
 	</package>
 	<package name="borrowrecord" namespace="record" extends="struts-default">
 		<action name="return" class="com.king.action.borrowreturn.ReturnAction">
-		
+
 		</action>
 		<action name="borrow" class="com.king.action.borrowreturn.BorrowAction">
-		
+
 		</action>
 	</package>
 </struts>

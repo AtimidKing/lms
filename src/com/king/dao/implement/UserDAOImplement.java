@@ -19,6 +19,7 @@ public class UserDAOImplement extends DAOSupport implements UserDAO {
 			}
 		} catch (java.sql.SQLException e) {
 			e.printStackTrace();
+			throw new Exception("通信异常，注册失败");
 		}
 		finally {
 			close();

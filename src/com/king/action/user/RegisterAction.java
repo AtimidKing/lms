@@ -26,6 +26,9 @@ public class RegisterAction extends ActionSupport {
 
 
 	public String execute() {
+		System.out.println("register被执行");
+		System.out.println(user.getUsername());
+		System.out.println(user.getPassword());
 		UserDAO userDAO=new UserDAOImplement();
 		Object object=ActionContext.
 				getContext().getSession().get("validation_code");
@@ -42,7 +45,9 @@ public class RegisterAction extends ActionSupport {
 			this.addActionError(e.getMessage());
 			return INPUT;
 		} catch (Exception e) {
+			this.addActionError("发生了未知的错误！");
 			e.printStackTrace();
+			return INPUT;
 		}
 		result="用户"+user.getUsername()+">注册成功";
 		return SUCCESS;
