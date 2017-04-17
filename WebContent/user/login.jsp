@@ -37,6 +37,9 @@
 			<label for="inputPassword" class="sr-only">密码</label>
 			<input type="password" id="inputPassword" class="form-control"
 				name="user.password" placeholder="密码" required>
+			<label for="inputValidationCode" class="sr-only">验证码</label>
+			<input type="text" id="inputValidationCode" class="form-control"
+				name="user.validationCode" placeholder="验证码" require>			
 			<img src="user/validate_code.action" id="img_validation_code"
 				class="img-responsive">
 			<a href="#" onClick="refresh()">重新获取验证码</a>

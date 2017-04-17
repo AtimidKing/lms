@@ -10,7 +10,7 @@ public class UserDAOImplement extends DAOSupport implements UserDAO {
 	@Override
 	public boolean validateUser(User user) throws Exception {
 		try {
-			java.sql.ResultSet rSet=this.execSql("select password_md5 from user where name=?", user.getUsername());
+			java.sql.ResultSet rSet=this.execSql("select password from user where username=?", user.getUsername());
 			if (rSet.next()) {
 				String password_MD5=Encrypter.md5Encypter(user.getPassword());
 				if (password_MD5.equals(rSet.getString("password_md5"))) {
@@ -19,7 +19,7 @@ public class UserDAOImplement extends DAOSupport implements UserDAO {
 			}
 		} catch (java.sql.SQLException e) {
 			e.printStackTrace();
-			throw new Exception("通信异常，注册失败");
+			throw new Exception("通信异常，登录失败");
 		}
 		finally {
 			close();

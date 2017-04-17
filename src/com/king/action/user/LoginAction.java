@@ -48,10 +48,11 @@ public class LoginAction extends ActionSupport implements ServletRequestAware {
 		}
 		try {
 			if (!userDAO.validateUser(user)) {
-				this.addActionError("�û������������");
+				this.addActionError("用户名或密码不正确");
 				return INPUT;
 			}
 		} catch (Exception e) {
+			this.addActionError(e.toString());
 			e.printStackTrace();
 		}
 		HttpSession session=request.getSession();
