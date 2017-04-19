@@ -14,4 +14,6 @@ public interface BookDAO {
 
 	public void addBook(Book book)throws Exception;
 
+	public Book searchBook(int id)throws Exception;
+
 }

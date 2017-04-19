@@ -7,7 +7,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		java.util.Date date=new java.util.Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
 		System.out.println(sdf.format(date));
 	}
 

@@ -6,23 +6,29 @@
 	<package name="book" namespace="/books" extends="struts-default">
 		<global-allowed-methods>regex:.*</global-allowed-methods>
 		<action name="index" class="com.king.action.book.IndexAction">
-			<result  name="success" type="redirect">/library/index.jsp</result>
+			<result name="success" >/library/index.jsp</result>
+			<result name="input" type="redirect">/library/error.jsp</result>
 		</action>
 		<action name="add" class="com.king.action.book.AddAction">
-
+			<result name="success" type="redirect">/books/index.action</result>
+			<result name="input" type="redirect">/library/add.jsp</result>
 		</action>
 		<action name="modify" class="com.king.action.book.ModifyAction">
-
+			<result name="modify">/library/modify.jsp</result>
+			<result name="success" type="redirect">/books/index.action</result>
+			<result name="input" type="redirect">/library/error.jsp</result>
 		</action>
 		<action name="delete" class="com.king.action.book.DeleteAction">
-
+			<result name="success" type="redirect">/books/index.action</result>
+			<result name="input" type="redirect">/library/error.jsp</result>
 		</action>
 		<action name="serach" class="com.king.action.book.SearchAction">
-
+			<result name="success" type="redirect">/books/index.action</result>
+			<result name="input" type="redirect">/library/error.jsp</result>
 		</action>
 
 	</package>
-	
+
 	<package name="user" namespace="/user" extends="struts-default">
 		<action name="logins" class="com.king.action.user.LoginAction">
 			<result name="success" type="redirect">/books/index.action</result>

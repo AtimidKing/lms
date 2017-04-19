@@ -18,7 +18,6 @@
 	var _hmt = _hmt || [];
 </script>
 <title>图书管理</title>
-
 </head>
 <body class="home-template">
 	<header class="site-header jumbotron">
@@ -38,7 +37,7 @@
 	</header>
 
 	<div class="container">
-		<a href="./add.jsp" class="btn btn-primary" style="background-color:#D3D3D3">添加图书</a>
+		<a href="../library/add.jsp" class="btn btn-primary" style="background-color:#D3D3D3">添加图书</a>
 		<div class="table-responsive" style="margin-top: 10px">
 			<table class="table table-striped">
 
@@ -58,9 +57,9 @@
 						<td><s:property value="#book.getPublishunit()" /></td>
 						<td><s:property value="#book.getPublishdate()" /></td>
 						<td><s:property value="#book.getAddress()" /></td>
-						<td><s:a action="book_delete?id=%{#book.getId()}"
+						<td><s:a action="/books/delete.action?id=%{#book.getId()}"
 								onClick="return window.confirm('删除该行数据')">删除</s:a></td>
-						<td><s:a>修改</s:a>
+						<td><s:a action="modify.action?id=%{#book.getId()}">修改</s:a>
 				</s:iterator>
 			</table>
 		</div>
@@ -68,9 +67,4 @@
 
 
 </body>
-<style>
-.ccontainer .table {
-	margin-top: 10px
-}
-</style>
 </html>

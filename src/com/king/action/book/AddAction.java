@@ -14,12 +14,14 @@ public class AddAction extends ActionSupport {
 	private Book book;
 	private BookDAO bookDAO=new BookDAOImplement();
 	public String execute() {
+		System.out.println(book.getName());
 		try {
 			bookDAO.addBook(book);
 		} catch (Exception e) {
 			e.printStackTrace();
+			return INPUT;
 		}
-		return null;
+		return SUCCESS;
 	}
 	public Book getBook() {
 		return book;

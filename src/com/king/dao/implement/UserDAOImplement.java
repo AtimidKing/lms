@@ -13,7 +13,7 @@ public class UserDAOImplement extends DAOSupport implements UserDAO {
 			java.sql.ResultSet rSet=this.execSql("select password from user where username=?", user.getUsername());
 			if (rSet.next()) {
 				String password_MD5=Encrypter.md5Encypter(user.getPassword());
-				if (password_MD5.equals(rSet.getString("password_md5"))) {
+				if (password_MD5.equals(rSet.getString("password"))) {
 					return true;
 				}
 			}

@@ -1,6 +1,5 @@
 package com.king.action.book;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.king.dao.implement.BookDAOImplement;
@@ -15,38 +14,24 @@ public class IndexAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Book book;
 	private BookDAO bookDAO= new BookDAOImplement();
-	private List<Book> lBooks=new ArrayList<Book>();
-
-	public List<Book> getlBooks() {
-		return lBooks;
+	
+	private List<Book> listBook;
+	
+	public List<Book> getListBook() {
+		return listBook;
 	}
-
-
-	public void setlBooks(List<Book> lBooks) {
-		this.lBooks = lBooks;
+	public void setListBook(List<Book> listBook) {
+		this.listBook = listBook;
 	}
-
-
-	public Book getBook() {
-		return book;
-	}
-
-
-	public void setBook(Book book) {
-		this.book = book;
-	}
-
-
 	public String execute() {
-		
 		try {
-			setlBooks(bookDAO.searchBook());
+			listBook=bookDAO.searchBook();
+			return SUCCESS;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return INPUT;
 		}
-		return SUCCESS;
 	}
+	
 }
