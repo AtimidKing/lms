@@ -16,4 +16,6 @@ public interface BookDAO {
 
 	public Book searchBook(int id)throws Exception;
 
+	public List<Book> searchBook(String keyword)throws Exception;
+
 }

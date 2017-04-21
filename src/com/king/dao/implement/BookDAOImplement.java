@@ -84,4 +84,12 @@ public class BookDAOImplement extends DAOSupport implements BookDAO {
 		return list.get(0);
 	}
 
+	@Override
+	public List<Book> searchBook(String keyword) throws Exception {
+		java.sql.ResultSet resultSet = this.execSql("select * from book where name=? or author=? or sort=? or publishunit=?",keyword,keyword,keyword,keyword);
+		List<Book> list=new ArrayList<Book>();
+		bookORM(list, resultSet);
+		return list;
+	}
+
 }

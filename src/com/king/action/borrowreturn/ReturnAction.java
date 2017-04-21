@@ -12,16 +12,25 @@ public class ReturnAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Book book;
-	private ReBoBookDAO reBoBookDAO= new  ReBoBookDAOImplement();
-	
+	private Book book=new Book();
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
+	private ReBoBookDAO reBoBookDAO = new ReBoBookDAOImplement();
+
 	public String execute() {
+		
 		try {
 			reBoBookDAO.returnBook(book.getId());
+			return SUCCESS;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return INPUT;
 		}
-		return null;
 	}
 }

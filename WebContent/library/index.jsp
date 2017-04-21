@@ -14,14 +14,14 @@
 <link
 	href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<script>
-	var _hmt = _hmt || [];
-</script>
+
 <title>图书管理</title>
 </head>
 <body class="home-template">
 	<header class="site-header jumbotron">
 	<div class="container">
+		<a href="../user/borrowrecord.action"
+			class="button button-primary button-small" style="float: right;">我的借书记录</a>
 		<div class="row">
 			<div class="col-xs-12">
 				<h1>图书管理</h1>
@@ -37,7 +37,8 @@
 	</header>
 
 	<div class="container">
-		<a href="../library/add.jsp" class="btn btn-primary" style="background-color:#D3D3D3">添加图书</a>
+		<a href="../library/add.jsp" class="btn btn-primary"
+			style="background-color: #D3D3D3">添加图书</a>
 		<div class="table-responsive" style="margin-top: 10px">
 			<table class="table table-striped">
 
@@ -59,7 +60,10 @@
 						<td><s:property value="#book.getAddress()" /></td>
 						<td><s:a action="/books/delete.action?id=%{#book.getId()}"
 								onClick="return window.confirm('删除该行数据')">删除</s:a></td>
-						<td><s:a action="modify.action?id=%{#book.getId()}">修改</s:a>
+						<td><s:a action="modify.action?id=%{#book.getId()}">修改</s:a></td>
+						<td><s:a
+								action="../record/borrow.action?book.id=%{#book.getId()}"
+								onClick="return window.confirm('确认借书')">借书</s:a></td>
 				</s:iterator>
 			</table>
 		</div>

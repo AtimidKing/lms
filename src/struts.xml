@@ -3,10 +3,10 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-	<package name="book" namespace="/books" extends="struts-default">
+	<package name="book" namespace="/books" extends="intercept">
 		<global-allowed-methods>regex:.*</global-allowed-methods>
 		<action name="index" class="com.king.action.book.IndexAction">
-			<result name="success" >/library/index.jsp</result>
+			<result name="success">/library/index.jsp</result>
 			<result name="input" type="redirect">/library/error.jsp</result>
 		</action>
 		<action name="add" class="com.king.action.book.AddAction">
@@ -23,8 +23,8 @@
 			<result name="input" type="redirect">/library/error.jsp</result>
 		</action>
 		<action name="serach" class="com.king.action.book.SearchAction">
-			<result name="success" type="redirect">/books/index.action</result>
-			<result name="input" type="redirect">/library/error.jsp</result>
+			<result name="success">/books/searchIndex.action</result>
+			<result name="error" type="redirect">/library/error.jsp</result>
 		</action>
 
 	</package>
@@ -34,21 +34,53 @@
 			<result name="success" type="redirect">/books/index.action</result>
 			<result name="input">/user/login.jsp</result>
 		</action>
+
 		<action name="register" class="com.king.action.user.RegisterAction">
 			<result name="success" type="redirect">/user/login.jsp</result>
 			<result name="input" type="redirect">/user/register.jsp</result>
 		</action>
+
+		<action name="borrowrecord" class="com.king.action.user.RecordAction">
+			<result name="success">/user/borrowrecord.jsp</result>
+			<result name="login" type="redirect">/user/login.jsp</result>
+			<result name="error" type="redirect">/library/error.jsp</result>
+		</action>
+
 		<action name="test" class="com.king.test.TextAction">
 			<result>/user/login.jsp</result>
 		</action>
+
 		<action name="validate_code" class="com.king.validation.ValidationCodeAction" />
 	</package>
-	<package name="borrowrecord" namespace="record" extends="struts-default">
-		<action name="return" class="com.king.action.borrowreturn.ReturnAction">
 
+	<package name="borrowrecords" namespace="/record" extends="struts-default">
+		<action name="return" class="com.king.action.borrowreturn.ReturnAction">
+			<result name="success" type="redirect">/user/borrowrecord.action</result>
+			<result name="login" type="redirect">/user/login.jsp</result>
+			<result name="error" type="redirect">/library/error.jsp</result>
 		</action>
 		<action name="borrow" class="com.king.action.borrowreturn.BorrowAction">
-
+			<result name="success" type="redirect">/user/borrowrecord.action</result>
+			<result name="login" type="redirect">/user/login.jsp</result>
+			<result name="error" type="redirect">/library/error.jsp</result>
 		</action>
+	</package>
+	<package name="intercept" namespace="/intercept" extends="struts-default">
+		<interceptors>
+			<interceptor name="authorization"
+				class="com.king.intercptor.AuthorizationIntercepor" />
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authorization">
+					<param name="ignoreAction">
+						validate_code,register,login
+					</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myStack" />
+		<global-results>
+			<result name="login" type="redirect">/user/login.jsp</result>
+		</global-results>
 	</package>
 </struts>
